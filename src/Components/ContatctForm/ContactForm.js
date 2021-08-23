@@ -1,12 +1,11 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { addContact } from "../../Redux/phonebook-operations";
-import { getContacts } from "../../Redux/phonebook-selectors";
+import { phonebookOperations, phonebookSelectors } from "Redux/phonebook";
 
 import styles from "./ContactForm.module.scss";
 
 const ContactForm = () => {
-  const contacts = useSelector(getContacts);
+  const contacts = useSelector(phonebookSelectors.getContacts);
   const dispatch = useDispatch();
 
   const [name, setName] = useState("");
@@ -39,7 +38,7 @@ const ContactForm = () => {
       return;
     }
 
-    dispatch(addContact({ name, number }));
+    dispatch(phonebookOperations.addContact({ name, number }));
 
     setName("");
     setNumber("");

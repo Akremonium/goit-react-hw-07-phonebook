@@ -5,31 +5,27 @@ import {
   addContactRequest,
   addContactSuccess,
   addContactError,
-  deleteContactRequest,
-  deleteContactSuccess,
-  deleteContactError,
-  getContactsRequest,
-  getContactsSuccess,
-  getContactsError,
 } from "./phonebook-actions";
 
+import { getContacts, deleteContact } from "./phonebook-operations";
+
 const contacts = createReducer([], {
-  [getContactsSuccess]: (_, { payload }) => payload,
+  [getContacts.fulfilled]: (_, { payload }) => payload,
   [addContactSuccess]: (state, { payload }) => [...state, payload],
-  [deleteContactSuccess]: (state, { payload }) =>
+  [deleteContact.fulfilled]: (state, { payload }) =>
     state.filter(({ id }) => id !== payload),
 });
 
 const loading = createReducer(false, {
-  [getContactsRequest]: () => true,
-  [getContactsSuccess]: () => false,
-  [getContactsError]: () => false,
+  [getContacts.pending]: () => true,
+  [getContacts.fulfilled]: () => false,
+  [getContacts.rejected]: () => false,
   [addContactRequest]: () => true,
   [addContactSuccess]: () => false,
   [addContactError]: () => false,
-  [deleteContactRequest]: () => true,
-  [deleteContactSuccess]: () => false,
-  [deleteContactError]: () => false,
+  [deleteContact.pending]: () => true,
+  [deleteContact.fulfilled]: () => false,
+  [deleteContact.rejected]: () => false,
 });
 
 const filter = createReducer("", {

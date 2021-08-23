@@ -1,7 +1,6 @@
 import { useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { getContacts, deleteContact } from "../../Redux/phonebook-operations";
-import { getVisibleContacts } from "../../Redux/phonebook-selectors";
+import { phonebookOperations, phonebookSelectors } from "Redux/phonebook";
 
 import PropTypes from "prop-types";
 import styles from "./ContactList.module.scss";
@@ -10,12 +9,13 @@ const ContactList = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
-    dispatch(getContacts());
+    dispatch(phonebookOperations.getContacts());
   }, [dispatch]);
 
   // const loading = useSelector(isLoading);
-  const contacts = useSelector(getVisibleContacts);
-  const onDeleteContact = (id) => dispatch(deleteContact(id));
+  const contacts = useSelector(phonebookSelectors.getVisibleContacts);
+  const onDeleteContact = (id) =>
+    dispatch(phonebookOperations.deleteContact(id));
 
   return (
     <ul className={styles.list}>

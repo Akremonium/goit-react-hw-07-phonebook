@@ -8,7 +8,7 @@ import {
   REGISTER,
 } from "redux-persist";
 
-import phonebookReducer from "./phonebook-reducer";
+import phonebookReducer from "./phonebook/phonebook-reducer";
 
 const middleware = (getDefaultMiddleware) =>
   getDefaultMiddleware({

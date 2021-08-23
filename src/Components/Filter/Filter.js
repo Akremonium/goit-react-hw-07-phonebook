@@ -1,13 +1,13 @@
 import { useSelector, useDispatch } from "react-redux";
-import { changeFilter } from "../../Redux/phonebook-actions";
-import { getFilter } from "../../Redux/phonebook-selectors";
+import { phonebookActions, phonebookSelectors } from "Redux/phonebook";
 
 import styles from "./Filter.module.scss";
 
 const Filter = () => {
-  const value = useSelector(getFilter);
+  const value = useSelector(phonebookSelectors.getFilter);
   const dispatch = useDispatch();
-  const onChange = (event) => dispatch(changeFilter(event.target.value));
+  const onChange = (event) =>
+    dispatch(phonebookActions.changeFilter(event.target.value));
 
   return (
     <label className={styles.filter}>
