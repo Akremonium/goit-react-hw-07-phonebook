@@ -35,6 +35,8 @@ const ContactForm = () => {
 
     if (contactExists(name)) {
       alert(`${name} is already in contacts`);
+      setName("");
+      setNumber("");
       return;
     }
 

@@ -1,3 +1,9 @@
 {
-  "contacts": []
+  "contacts": [
+    {
+      "name": "qweqwe",
+      "number": "123123",
+      "id": "3bd5e271-2ba4-496c-8091-d5d59da4ffbe"
+    }
+  ]
 }
